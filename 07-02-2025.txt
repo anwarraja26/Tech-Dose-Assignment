@@ -1,0 +1,79 @@
+Catlon number using dynamic programming
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n=5;
+    vector<int>c(n);
+    c[0]=c[1]=1;
+    
+    for(int i=2;i<c.size();i++){
+        int res=0;
+        for(int j=0;j<i;j++){
+            res+=c[j]*c[i-j-1];
+            
+        }
+        c[i]=res;
+    }
+    for(int i=0;i<c.size();i++){
+        cout<<c[i]<<" ";
+    }
+}
+
+
+Catlon number using the recursion approach
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int find_catelon(int n){
+    if(n<=1){
+        return 1;
+    }
+    int res=0;
+    for(int i=0;i<n;i++){
+        res+=find_catelon(i)*find_catelon(n-i-1);
+    }
+    return res;
+    
+}
+int main(){
+    int n=5;
+    vector<int>c(n);
+    for(int i=0;i<c.size();i++){
+        int res=find_catelon(i);
+        cout<<res<<" ";
+    }
+}
+
+
+Find the number valid parenthesis that consist of n pairs of parenthesis
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int binomial(int n,int k){
+    if(k>n-k){
+        k=n-k;
+    }
+    long long res=1;
+    for(int i=0;i<k;i++){
+        res=res*(n-i);
+        res=res/(i+1);
+    }
+    return res;
+}
+int find_catlan(int n){
+    if(n%2==1){
+        return 0;
+    }
+    n=n/2;
+    int res=binomial(2*n,n);
+    return res/(n+1);
+}
+int main(){
+    int n=6;
+  
+    cout<<find_catlan(n);
+    return 0;
+}
