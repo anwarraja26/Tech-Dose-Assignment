@@ -6,7 +6,7 @@ using namespace std;
 
 bool isPrime(int n) {
     if (n <= 1) return false;
-    if (n == 2) return true; // 2 is the only even prime number
+    if (n == 2) return true;
     if (n % 2 == 0) return false;
 
     for (int i = 3; i <= sqrt(n); i += 2) {
@@ -62,7 +62,7 @@ using namespace std;
 
 void sieveOfEratosthenes(int n) {
     vector<bool> isPrime(n + 1, true);
-    isPrime[0] = isPrime[1] = false; // 0 and 1 are not prime numbers
+    isPrime[0] = isPrime[1] = false; 
 
     for (int i = 2; i * i <= n; i++) {
         if (isPrime[i]) {
